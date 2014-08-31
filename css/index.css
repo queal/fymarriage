@@ -1,0 +1,14 @@
+.map-container {
+	display: block;
+    height: 400px;
+    width: 80%;
+    margin:  20px auto;
+    margin-top: 60px;
+    padding: 12px;
+    -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.8);
+    -moz-box-shadow: 0px 0px 5px rgba(0,0,0,.8);
+    box-shadow: 0px 0px 5px rgba(0,0,0,.8);
+    position: relative; 
+    background-color:#fff ; 
+    text-align: center;
+}
