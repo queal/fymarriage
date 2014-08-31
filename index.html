@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/default.css" />
+<link rel="stylesheet" type="text/css" href="css/multilevelmenu.css" />
+<link rel="stylesheet" type="text/css" href="css/component.css" />
+<link rel="stylesheet" type="text/css" href="css/animations.css" />
+<link rel="stylesheet" type="text/css" href="css/animate.css" />
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+<script src="js/modernizr.custom.js"></script>
+</head>
+<body>
+	<div class="pt-triggers">
+		<button id="iterateEffects" class="pt-touch-button"
+			style="display: none;">Next</button>		
+		<audio id="myBGM" src="bgm/122878141.mp3" hidden="true">  
+			Your browser does not support the <code>audio</code> element.  
+        </audio>
+	</div>
+
+	<div id="pt-main" class="pt-perspective">
+		<div class="pt-page pt-page-1">
+			<div id="allmap1" class="map-container" ></div>
+			<div id="story1" align="center" data-out-effect="flipOutX" data-out-shuffle="true">
+				<ul class="texts" style="display: none">
+					<li>从前有个两个人</li>
+                    <li>他们都在火锅大学!!</li>
+					<li>再后来他们就结婚了!!!(还有后续)</li>
+					<li>其实2006-2010年，他们相遇在川大，却没谈恋爱</li>
+				</ul>
+			</div>
+		</div>
+		<div class="pt-page pt-page-2">
+			<div id="allmap2" class="map-container" style="height: 500px;"></div>
+			<div id="story2" align="center" data-out-effect="flipOutX" data-out-shuffle="true">
+				<ul class="texts" style="display: none">
+					<li>后来到了2012年</li>
+                    <li>他们相爱了(其实我想说是世界末日好嘛~)</li>
+					<li>可是他们是异地恋!(异地恋啊!!!)</li>
+				</ul>
+			</div>
+		</div>
+		<div class="pt-page pt-page-3">
+			<div id="allmap3" class="map-container" style="height: 500px;"></div>
+			<div id="story3" align="center" data-out-effect="flipOutX" data-out-shuffle="true">
+				<ul class="texts" style="display: none">
+					<li>再后来2013年</li>
+                    <li>他们都在杭州</li>
+					<li>可是他们还是异房恋!(异房恋啊!!!)</li>
+				</ul>
+			</div>
+		</div>
+		<div class="pt-page pt-page-4">
+			<div id="allmap4" class="map-container" style="height: 500px;"></div>
+			<div id="story4" align="center" data-out-effect="flipOutX" data-out-shuffle="true">
+				<ul class="texts" style="display: none">
+					<li>最终在2014年</li>
+                    <li>他们在青岛结婚咯</li>
+					<li>(字幕君我祝福你们啊!)</li>
+				</ul>
+			</div>
+		</div>
+		<div class="pt-page pt-page-5">		
+			<div id="allmap5" class="map-container" style="height: 500px;"></div>				
+			<div id="story5" align="center" data-out-effect="flipOutX" data-out-shuffle="true">
+				<ul class="texts" style="display: none">
+					<li>时间:2014/09/14 (星期天)</li>
+                    <li>地点:青岛市李沧区书院路188号盛世桃园生态酒店</li>
+					<li>17098041087（新郎：孙正磊）18158348707（新娘：何燕）</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="pt-message">
+		<p>Your browser does not support CSS animations.</p>
+	</div>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/jquery.dlmenu.js"></script>
+	<script src="js/pagetransitions.js"></script>
+	<script src="js/jquery.fittext.js"></script>
+	<script src="js/jquery.lettering.js"></script>
+	<script src="js/jquery.textillate.js"></script>
+	<script type="text/javascript"
+		src="http://api.map.baidu.com/api?v=1.5&ak=A9d82b9587eb92487a5068542db56799"></script>
+	
+	<script type="text/javascript">
+		$().ready(function() {
+			// bgm start 		
+			document.getElementById("myBGM").play();
+		
+			// story 1
+			var map1 = new BMap.Map("allmap1");
+			// a 点, 104.070871,30.646375
+			// b 点, 104.078309,30.64493
+			map1.centerAndZoom(new BMap.Point(104.074177,30.646701), 17);
+			map1.enableScrollWheelZoom();
+			
+			// boy
+			var boyPoint = new BMap.Point(104.070871,30.646375);
+			var boyIcon = new BMap.Icon("bzpic/b1.png", new BMap.Size(50, 50));
+			var boy = new BMap.Marker(boyPoint,{icon:boyIcon}); 
+			var boyLabel = new BMap.Label("孙尼玛",{offset:new BMap.Size(20,-10)});
+			boy.setLabel(boyLabel);
+			map1.addOverlay(boy); 
+
+			// gril	
+			var grilPoint = new BMap.Point(104.078309,30.64493);
+			var grilIcon = new BMap.Icon("bzpic/g1.png", new BMap.Size(50, 50));
+			var gril = new BMap.Marker(grilPoint,{icon:grilIcon}); 
+			var grilLabel = new BMap.Label("何尼美",{offset:new BMap.Size(20,-10)});
+			gril.setLabel(grilLabel);
+			map1.addOverlay(gril);
+			
+			$("#story1").textillate({
+				callback : function() {
+					var boyTrack = [];
+					boyTrack.push(new BMap.Point(104.070871,30.646375));
+					boyTrack.push(new BMap.Point(104.071871,30.646375));
+					boyTrack.push(new BMap.Point(104.074177,30.646701));
+					boyTrack.push(new BMap.Point(104.071871,30.646375));
+					boyTrack.push(new BMap.Point(104.070871,30.646375));
+					
+					var grilTrack = [];
+					grilTrack.push(new BMap.Point(104.078309,30.64493));
+					grilTrack.push(new BMap.Point(104.076297,30.645878));
+					grilTrack.push(new BMap.Point(104.074249,30.644837));
+					grilTrack.push(new BMap.Point(104.076297,30.645878));
+					grilTrack.push(new BMap.Point(104.078309,30.64493));
+					
+					setTimeout(function () {
+						var boyIndex = 0;
+						var gridIndex = 0;
+						resetMkPoint(boy, boyTrack, boyIndex);
+						resetMkPoint(gril, grilTrack, gridIndex);
+					}, 1000);
+					
+					setTimeout(function () {
+						// story 2
+						nextStage();
+						
+						var map2 = new BMap.Map("allmap2");
+						// a 点, 125.060549, 43.446525
+						// b 点, 120.277252, 30.993691
+						map2.centerAndZoom(new BMap.Point(122.595311, 38.137858), 5);
+						map2.enableScrollWheelZoom();
+
+						// boy
+						var boyPoint = new BMap.Point(125.060549, 43.446525);
+						var boyIcon = new BMap.Icon("bzpic/b1.png", new BMap.Size(50, 50));
+						var boy = new BMap.Marker(boyPoint,{icon:boyIcon});
+						boy.setLabel(boyLabel);
+						map2.addOverlay(boy); 
+
+						// gril	
+						var grilPoint = new BMap.Point(120.277252, 30.993691);
+						var grilIcon = new BMap.Icon("bzpic/g1.png", new BMap.Size(50, 50));
+						var gril = new BMap.Marker(grilPoint,{icon:grilIcon}); 
+						gril.setLabel(grilLabel);
+						map2.addOverlay(gril);
+						
+						$("#story2").textillate({
+							callback : function() {
+								boy.setIcon(new BMap.Icon("bzpic/b3.png", new BMap.Size(50, 50)));
+								gril.setIcon(new BMap.Icon("bzpic/g3.png", new BMap.Size(50, 50)));
+								
+								
+								
+								setTimeout(function () {
+									// story 3
+									nextStage();
+									
+									var map3 = new BMap.Map("allmap3");
+									// a 点, 120.212717, 30.247708
+									// b 点, 120.128923, 30.278901
+									map3.centerAndZoom(new BMap.Point(120.154363, 30.253198), 14);
+									map3.enableScrollWheelZoom();
+									
+									// boy
+									var boyPoint = new BMap.Point(120.212717, 30.247708);
+									var boyIcon = new BMap.Icon("bzpic/b3.png", new BMap.Size(50, 50));
+									var boy = new BMap.Marker(boyPoint,{icon:boyIcon});
+									boy.setLabel(boyLabel);
+									map3.addOverlay(boy); 
+
+									// gril	
+									var grilPoint = new BMap.Point(120.128923, 30.278901);
+									var grilIcon = new BMap.Icon("bzpic/g3.png", new BMap.Size(50, 50));
+									var gril = new BMap.Marker(grilPoint,{icon:grilIcon}); 
+									gril.setLabel(grilLabel);
+									map3.addOverlay(gril);
+									
+									$("#story3").textillate({
+										callback : function() {
+											boy.setIcon(new BMap.Icon("bzpic/b6.png", new BMap.Size(50, 50)));
+											gril.setIcon(new BMap.Icon("bzpic/g2.png", new BMap.Size(50, 50)));
+											
+											
+											setTimeout(function () {
+												// story 4
+												nextStage();
+												
+												var map4 = new BMap.Map("allmap4");
+												// a 点, 120.417531, 36.155043 
+												// b 点, 120.423136, 36.155859
+												map4.centerAndZoom(new BMap.Point(120.419903, 36.153178), 14);
+												map4.enableScrollWheelZoom();
+												 
+												// boy
+												var boyPoint = new BMap.Point(120.417531, 36.155043);
+												var boyIcon = new BMap.Icon("bzpic/b7.png", new BMap.Size(50, 50));
+												var boy = new BMap.Marker(boyPoint,{icon:boyIcon});
+												boy.setLabel(boyLabel);
+												map4.addOverlay(boy); 
+
+												// gril	
+												var grilPoint = new BMap.Point(120.423136, 36.155859);
+												var grilIcon = new BMap.Icon("bzpic/g7.png", new BMap.Size(50, 50));
+												var gril = new BMap.Marker(grilPoint,{icon:grilIcon}); 
+												gril.setLabel(grilLabel);
+												map4.addOverlay(gril);
+												
+												$("#story4").textillate({
+													callback : function() {
+														setTimeout(function () {
+															// story 5
+															nextStage();
+															
+															var map5 = new BMap.Map("allmap5");
+															map5.centerAndZoom(new BMap.Point(120.419903, 36.153178), 14);
+															map5.enableScrollWheelZoom();
+														
+															// gril	
+															var grilPoint = new BMap.Point(120.423136, 36.155859);
+															var grilIcon = new BMap.Icon("bzpic/g7.png", new BMap.Size(50, 50));
+															var gril = new BMap.Marker(grilPoint,{icon:grilIcon}); 
+															gril.setLabel(grilLabel);
+															map5.addOverlay(gril);
+															
+															var opts = {
+															  width : 200,
+															  height: 100
+															}
+															var infoWindow = new BMap.InfoWindow("2014/09/14<br/>老娘在这儿等你哦!<br/>alipay: heyancq1987@126.com");
+															map5.openInfoWindow(infoWindow, grilPoint);
+															
+															gril.addEventListener("click", function(){
+																var grilPoint = new BMap.Point(120.423136, 36.155859);
+																var opts = {
+																  width : 200,
+																  height: 100
+																}
+																var infoWindow = new BMap.InfoWindow("2014/09/14<br/>老娘在这儿等你哦!<br/>alipay: heyancq1987@126.com");
+																map5.openInfoWindow(infoWindow, grilPoint);
+															});
+															
+															$("#story5").textillate();
+															
+														}, 3000);
+													}
+												});
+												
+											}, 3000);
+										}
+									});
+									
+								}, 3000);
+							}
+						});
+					}, 8000);
+					
+				}
+			});
+		});
+		
+		function resetMkPoint(marker, track, i){
+			marker.setPosition(track[i]);
+			if(i < track.length){
+				setTimeout(function(){
+					i++;
+					resetMkPoint(marker, track, i);
+				}, 1000);
+			}
+		}
+		
+		function nextStage() {
+			$("#iterateEffects").click();
+		}
+	</script>
+</body>
+</html>
